@@ -16,7 +16,8 @@ router.get('/', (req, res) => {
 
 //Show (cRud)
 router.get('/:id', (req, res) => {
-    res.send(`Vuoi visualizzare il post numero: ${req.params.id}`);
+    const selectedPost = posts.find(post => post.id == parseInt(req.params.id))
+    res.send(selectedPost);
 })
 
 //Store (Crud)
