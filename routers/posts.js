@@ -8,40 +8,25 @@ const postsController = require("../controllers/postController.js");
 
 
 //index (cRud)
-router.get('/', (req, res) => {
-    console.log("Ecco la bacheca!");
-    //res.send("Server del mio blog");// invia una risposta alla richiesta per la rotta di base '/'
-    res.json(posts);
-})
+router.get('/', postsController.index)
 
 //Show (cRud)
-router.get('/:id', (req, res) => {
-    const selectedPost = posts.find(post => post.id == parseInt(req.params.id))
-    res.send(selectedPost);
-})
+router.get('/:id', postsController.show)
 
 //Store (Crud)
 //Il verbo POST serve a aggiungere una nuova Entità Centrale
-router.post('/', (req, res) => {
-    res.send(`Vuoi creare un nuovo post`);
-})
+router.post('/', postsController.store)
 
 //Update (crUd)
 //Il verbo PUT serve a sostituitre una Entità con una completamente nuova
-router.put('/:id', (req, res) => {
-    res.send(`Vuoi modificare (completamente) il post numero: ${req.params.id}`);
-})
+router.put('/:id', postsController.update)
 
 //Modify (crUd)
 //Il verbo PATCH serve a "pachare", modivicare il parte l'Entità
-router.patch('/:id', (req, res) => {
-    res.send(`Vuoi aggiornare (parzialmente) il post numero: ${req.params.id}`);
-})
+router.patch('/:id', postsController.modify)
 
 //Destroy (cruD)
 // il verbo DELETE serve a eliminare una Entità
-router.delete('/:id', (req, res) => {
-    res.send(`Vuoi eliminare il post numero: ${req.params.id}`);
-})
+router.delete('/:id', postsController.destroy)
 
 module.exports = router;

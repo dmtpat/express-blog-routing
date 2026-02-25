@@ -21,7 +21,7 @@ function destroy(req, res) {
 }
 
 
-const postFunctions = {
+const controllers = {
     index,
     show,
     store,
@@ -30,4 +30,4 @@ const postFunctions = {
     destroy
 };
 
-module.export = postFunctions
+module.exports = controllers
