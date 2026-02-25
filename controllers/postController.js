@@ -6,8 +6,17 @@ function index(req, res) {
 }
 //--------------------------------------------------------------------
 function show(req, res) {
-    const selectedPost = posts.find(post => post.id == parseInt(req.params.id))
-    res.send(selectedPost);
+    const id = Number(req.params.id)
+
+    if (isNaN(id)) {
+        return res.status(400).json({ error: "User Error", message: "Id non valido" })
+    }
+    const result = posts.find(post => post.id == id)
+
+    if (!result) {
+        return res.status(404).json({ error: "Not Found", message: "Post non trovato" })
+    }
+    res.send(result);
 }
 function store(req, res) {
     res.send(`Vuoi creare un nuovo post`);
