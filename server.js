@@ -7,35 +7,10 @@ const port = 3000;
 //importo le rotte dal file delle rotte per le Entità Posts
 const postsRouter = require('./routers/posts')
 
-const posts = [
-    {
-        titolo: "pippo",
-        contenuto: "lorem ipsum",
-        image: "/image1.jpg"
-    },
-    {
-        titolo: "mario",
-        contenuto: "lorem ipsum",
-        image: "/image2.jpg"
-    },
-    {
-        titolo: "mariella",
-        contenuto: "lorem ipsum",
-        image: "/image3.jpg"
-    },
-    {
-        titolo: "gisella",
-        contenuto: "lorem ipsum",
-        image: "/image4.jpg"
-    },
-    {
-        titolo: "peppe",
-        contenuto: "lorem ipsum",
-        image: "/image5.jpg"
-    }
-]
+
 
 app.use(express.static('public'));
+app.use(express.json());
 
 app.get('/', (req, res) => {
     console.log("Ecco la prima chiamata!");

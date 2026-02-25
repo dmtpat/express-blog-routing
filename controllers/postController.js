@@ -1,4 +1,4 @@
-const posts = require("../public/posts.js")
+const posts = require("../data/posts.js")
 
 //--------------------------------------------------------------------
 function index(req, res) {
@@ -26,6 +26,7 @@ function show(req, res) {
     res.send(result);
 }
 function store(req, res) {
+    console.log(`Vuoi creare un nuovo post`, req.body);
     res.send(`Vuoi creare un nuovo post`);
 }
 function update(req, res) {
