@@ -2,7 +2,14 @@ const posts = require("../public/posts.js")
 
 //--------------------------------------------------------------------
 function index(req, res) {
-    res.json(posts);
+    console.log(req.query);
+    let results = posts;
+    if (req.query.tags) {
+        results = posts.filter(post => post.tags.find(tag => tag.toLowerCase() == req.query.tags.toLowerCase()) ? true : false);
+        //results = posts.find(post => post.tags.toLowerCase() == req.query.tags.toLowerCase()) ? true : false
+    }
+
+    res.json(results);
 }
 //--------------------------------------------------------------------
 function show(req, res) {
