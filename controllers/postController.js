@@ -27,7 +27,18 @@ function show(req, res) {
 }
 function store(req, res) {
     console.log(`Vuoi creare un nuovo post`, req.body);
-    res.send(`Vuoi creare un nuovo post`);
+    const newPost = {
+        id: posts[posts.length - 1].id + 1,
+        title: req.body.title,
+        content: req.body.content,
+        image: req.body.image,
+        tags: req.body.tags
+    }
+
+    posts.push(newPost);
+    console.log(posts);
+    return res.status(201).json(newPost);
+
 }
 function update(req, res) {
     res.send(`Vuoi modificare (completamente) il post numero: ${req.params.id}`);
