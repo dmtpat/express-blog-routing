@@ -25,11 +25,15 @@ function show(req, res) {
     }
     res.send(result);
 }
-//-----------------------------------------------------------------------------
+//------------------------------------(^..^)S--------------------------
 function store(req, res) {
     console.log(`Vuoi creare un nuovo post`, req.body);
+    const idArray = [];
+    posts.forEach(post => { idArray.push(post.id); });
+    const maxId = Math.max(...idArray)
+    console.log("il max id è", maxId);
     const newPost = {
-        id: posts[posts.length - 1].id + 1,
+        id: maxId + 1,
         title: req.body.title,
         content: req.body.content,
         image: req.body.image,
@@ -41,7 +45,7 @@ function store(req, res) {
     return res.status(201).json(newPost);
 
 }
-//------------------------------->^.^<----------------------------------------
+//------------------------------->^.^<----------------------/¨\7
 function update(req, res) {
     const id = Number(req.params.id)
 
