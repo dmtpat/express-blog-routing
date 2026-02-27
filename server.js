@@ -9,11 +9,13 @@ const postsRouter = require('./routers/posts');
 
 //importo i middlewares dalla cartella dei middlewares
 const notFound = require("./middlewares/notFound")
-const errorsHandler = require("./middlewares/errorsHandler")
+const errorsHandler = require("./middlewares/errorsHandler");
+const reqInfo = require('./middlewares/requestInfo');
 
 
 app.use(express.static('public'));
 app.use(express.json());
+app.use(reqInfo);
 
 app.get('/', (req, res) => {
     console.log("Ecco la prima chiamata!");
