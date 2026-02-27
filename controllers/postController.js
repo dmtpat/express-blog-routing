@@ -45,7 +45,8 @@ function store(req, res) {
     return res.status(201).json(newPost);
 
 }
-//------------------------------->^.^<----------------------/¨\7
+//---------------------------------->^.^<-----------------------------
+
 function update(req, res) {
     const id = Number(req.params.id)
 
@@ -66,8 +67,26 @@ function update(req, res) {
 
     res.status(200).json(result);
 }
+//----------------------------------------------------/¨\7-------------------------
 function modify(req, res) {
-    res.send(`Vuoi aggiornare (parzialmente) il post numero: ${req.params.id}`);
+    const id = Number(req.params.id)
+
+    if (isNaN(id)) {
+        return res.status(400).json({ error: "User Error", message: "Id non valido" })
+    }
+    const result = posts.find(post => post.id == id)
+
+    if (!result) {
+        return res.status(404).json({ error: "Not Found", message: "Post non trovato" })
+    }
+    const allowedParam = ["title", "content", "image", "tags"];
+    for (const element of allowedParam) {
+        if (req.body[element]) {
+            result[element] = req.body[element]
+        }
+    }
+    res.status(200).json(result);
+    // res.send(`Vuoi aggiornare (parzialmente) il post numero: ${req.params.id}`);
 }
 //-----------------------------------------------------------------------------
 function destroy(req, res) {
