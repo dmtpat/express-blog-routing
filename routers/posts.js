@@ -3,8 +3,9 @@ const router = express.Router();
 const posts = require("../data/posts.js")
 
 const postsController = require("../controllers/postController.js");
+const checkParam = require('../middlewares/checkParam.js');
 
-//Show (cRud)
+router.use('/:id', checkParam)
 
 
 //index (cRud)
