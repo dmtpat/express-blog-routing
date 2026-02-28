@@ -1,6 +1,6 @@
 const posts = require("../data/posts.js")
 
-//--------------------------------------------------------------------
+//------------>^.^<---------INDEX-------------------------------------
 function index(req, res) {
 	console.log(req.query);
 	let results = posts;
@@ -11,7 +11,7 @@ function index(req, res) {
 
 	res.json(results);
 }
-//--------------------------------------------------------------------
+//--------------------------SHOW------------------/¨\7-----------------
 function show(req, res) {
 	const id = Number(req.params.id)
 	const result = posts.find(post => post.id == id)
@@ -21,7 +21,7 @@ function show(req, res) {
 	}
 	res.send(result);
 }
-//------------------------------------(^..^)S--------------------------
+//--------------------------STORE--------(^..^)S----------------------
 function store(req, res) {
 	console.log(`Vuoi creare un nuovo post`, req.body);
 	const idArray = [];
@@ -40,7 +40,7 @@ function store(req, res) {
 	return res.status(201).json(newPost);
 
 }
-//---------------------------------->^.^<-----------------------------
+//--------------------------UPDATE----->^.^<-------------------------
 
 function update(req, res) {
 	const id = Number(req.params.id)
@@ -58,7 +58,7 @@ function update(req, res) {
 
 	res.status(200).json(result);
 }
-//----------------------------------------------------/¨\7-------------------------
+//--------------------------MODIFY--------------/¨\7------------
 function modify(req, res) {
 	const id = Number(req.params.id)
 	const result = posts.find(post => post.id == id)
@@ -75,7 +75,7 @@ function modify(req, res) {
 	res.status(200).json(result);
 	// res.send(`Vuoi aggiornare (parzialmente) il post numero: ${req.params.id}`);
 }
-//-----------------------------------------------------------------------------
+//---------(^..^)S----------DESTROY--------------------------------
 function destroy(req, res) {
 	const id = Number(req.params.id)
 	const result = posts.find(post => post.id == id)
